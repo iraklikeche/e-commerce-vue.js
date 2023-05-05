@@ -1,28 +1,10 @@
+<script setup>
+import Header from "./Header.vue"
+</script>
+
 <template>
   <div>
-    <section class="header">
-      <a href=""><img src="../assets/img/logo.png" alt="" /></a>
-      <div>
-        <ul class="navbar">
-          <li><a class="active" href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li>
-            <a href="cart.html"
-              ><i id="lg-bag" class="fa-solid fa-cart-shopping"></i
-            ></a>
-          </li>
-          <i id="close" class="fa-solid fa-xmark"></i>
-        </ul>
-      </div>
-      <div class="mobile">
-        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-        <i class="fa fa-solid fa-bars"></i>
-      </div>
-    </section>
-
+    <Header />
     <!-- ------------------ HERO -------------------- -->
     <section class="hero">
       <h4>Trade-in-offer</h4>
@@ -37,6 +19,31 @@
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@100;200;300;400;600;700&family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap");
+
+button.normal {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 30px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+
+button.white {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 18px;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #fff;
+  outline: none;
+  transition: 0.2s;
+}
 
 h1 {
   font-size: 64px;
@@ -66,62 +73,12 @@ p {
   margin: 15px 0 20px 0;
 }
 
-.header {
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
-  padding: 20px 80px;
-  background-color: #e3e6f3;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-  z-index: 999;
-  position: sticky;
-  top: 0;
-  left: 0;
+.section-p1 {
+  padding: 40px 80px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar li {
-  list-style: none;
-  padding: 0 20px;
-  position: relative;
-}
-
-.navbar li a {
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1a1a1a;
-  transition: 0.3s ease;
-}
-
-.navbar li a:hover,
-.navbar li a.active {
-  color: #088178;
-}
-
-.navbar li a.active:after,
-.navbar li a:hover::after {
-  content: "";
-  width: 30%;
-  height: 2px;
-  background-color: #088178;
-  position: absolute;
-  bottom: -4px;
-  left: 20px;
-}
-
-.mobile {
-  display: none;
-  align-items: center;
-}
-
-#close {
-  display: none;
+.section-m1 {
+  margin: 40px 0;
 }
 
 /* ----------------- HERO ------------------ */
