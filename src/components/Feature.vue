@@ -1,14 +1,12 @@
 <script setup>
 const features = [
-  { img: "../assets/img/features/f1.png", title: "Free Shipping" },
-  { img: "../assets/img/features/f2.png", title: "Online Order" },
-  { img: "../assets/img/features/f3.png", title: "Save Money" },
-  { img: "../assets/img/features/f4.png", title: "Promotions" },
-  { img: "../assets/img/features/f5.png", title: "Happy Sell" },
-  { img: "../assets/img/features/f6.png", title: "F24/7 Support" },
+  { img: "@/../public/img/features/f1.png", title: "Free Shipping" },
+  { img: "@/../public/img/features/f2.png", title: "Online Order" },
+  { img: "@/../public/img/features/f3.png", title: "Save Money" },
+  { img: "@/../public/img/features/f4.png", title: "Promotions" },
+  { img: "@/../public/img/features/f5.png", title: "Happy Sell" },
+  { img: "@/../public/img/features/f6.png", title: "F24/7 Support" },
 ];
-
-console.log(features[0].img);
 </script>
 
 <template>

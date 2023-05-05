@@ -38,7 +38,7 @@ p {
 }
 
 .hero {
-  background-image: url(../assets/img/hero4.png);
+  background-image: url(@/../public/img/hero4.png);
   height: 90vh;
   background-size: cover;
   background-position: top 25% right 0;
