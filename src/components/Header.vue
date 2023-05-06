@@ -1,6 +1,6 @@
 <template>
   <section class="header">
-    <a href=""><img src="../assets/img/logo.png" alt="" /></a>
+    <a href=""><img src="@/../public/img/logo.png" alt="" /></a>
     <div>
       <ul class="navbar">
         <li><a class="active" href="#">Home</a></li>
