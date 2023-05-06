@@ -54,6 +54,10 @@
 </template>
 
 <style scoped>
+.section-p1 {
+  padding: 40px 80px;
+}
+
 .product1 .pro-container {
   display: flex;
   justify-content: space-between;

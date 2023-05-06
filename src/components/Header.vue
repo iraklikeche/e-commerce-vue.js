@@ -26,7 +26,7 @@
   display: flex;
   text-align: center;
   justify-content: space-between;
-  padding: 20px 80px;
+  padding: 25px 100px 40px;
   background-color: #e3e6f3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   z-index: 999;
@@ -43,13 +43,13 @@
 
 .navbar li {
   list-style: none;
-  padding: 0 20px;
+  padding: 0 25px;
   position: relative;
 }
 
 .navbar li a {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   color: #1a1a1a;
   transition: 0.3s ease;
@@ -68,7 +68,7 @@
   background-color: #088178;
   position: absolute;
   bottom: -4px;
-  left: 20px;
+  left: 30px;
 }
 
 .mobile {
