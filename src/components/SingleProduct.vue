@@ -1,5 +1,19 @@
 <script setup>
+import { ref } from "vue";
 import { useRoute } from "vue-router";
+
+const products = ref(null);
+const product = ref([]);
+fetch("https://fakestoreapi.com/products")
+  .then((response) => response.json())
+  .then((data) => {
+    products.value = data;
+    product.value = products.value.find(
+      (item) => item.id === parseInt(route.params.id)
+    );
+
+    console.log(data);
+  });
 
 const route = useRoute();
 
@@ -7,9 +21,11 @@ console.log(route.params);
 </script>
 
 <template>
-  <div class="pro">
-    <img src="" alt="" />
-    <div class="desc"></div>
+  <img :src="product.image" alt="" />
+  <div class="desc">
+    <span>{{ product.title }}</span>
+    <h5>{{ product.description }}</h5>
+    <h4>{{ product.price }}$</h4>
   </div>
 </template>
 
