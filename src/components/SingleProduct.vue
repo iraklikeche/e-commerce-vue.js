@@ -21,16 +21,18 @@ console.log(route.params);
 </script>
 
 <template>
-  <img :src="product.image" alt="" />
-  <div class="desc">
-    <span>{{ product.title }}</span>
-    <h5>{{ product.description }}</h5>
-    <h4>{{ product.price }}$</h4>
+  <div class="pro">
+    <img :src="product.image" alt="" />
+    <div class="desc">
+      <span>{{ product.title }}</span>
+      <h5>{{ product.description }}</h5>
+      <h4>{{ product.price }}$</h4>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.product1 .pro {
+.pro {
   width: 21%;
   min-width: 250px;
   padding: 10px 24px;
@@ -41,50 +43,43 @@ console.log(route.params);
   margin: 15px 0;
   transition: 0.2s ease;
   position: relative;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
 }
 
-.product1 .pro:hover {
+.pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }
-.product1 .pro img {
+.pro img {
   width: 70%;
   border-radius: 20px;
 }
-
-.product1 .pro .desc {
+.pro .desc {
   text-align: start;
   padding: 10px 0;
 }
 
-.product1 .pro .desc span {
+.pro .desc span {
   color: #060663;
   font-size: 12px;
 }
 
-.product1 .pro .desc h5 {
+.pro .desc h5 {
   padding-top: 7px;
   color: #1a1a1a;
   font-size: 18px;
 }
-
-.product1 .pro .desc i {
+.pro .desc i {
   font-size: 16px;
   color: rgb(243, 181, 25);
 }
 
-.product1 .pro .desc h4 {
+.pro .desc h4 {
   padding-top: 7px;
   font-size: 18px;
   font-weight: 700;
   color: #088178;
 }
 
-.product1 .pro .cart {
+.pro .cart {
   width: 40px;
   height: 40px;
   line-height: 40px;
