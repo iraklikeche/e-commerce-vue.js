@@ -1,51 +1,38 @@
+<script setup>
+import { ref } from "vue";
+
+const products = ref(null);
+fetch("https://fakestoreapi.com/products")
+  .then((response) => response.json())
+  .then((data) => {
+    products.value = data;
+    console.log(data);
+  });
+
+console.log(products.value);
+
+truncateWords(text, maxWords) {
+    const words = text.split(' ');
+
+    if (words.length <= maxWords) {
+      return text;
+    }
+
+    return words.slice(0, maxWords).join(' ') + '...';
+  },
+</script>
+
 <template>
   <section class="product1 section-p1">
     <h2>Featured Products</h2>
     <p>Summer Collection New Morden Design</p>
     <div class="pro-container">
-      <div class="pro">
-        <img src="@/../public/img/products/f1.jpg" alt="" />
+      <div class="pro" v-for="product in products" :key="product.id">
+        <img :src="product.image" alt="" />
         <div class="desc">
-          <span>Adidas</span>
-          <h5>Cartoon Astronaut T-shirts</h5>
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <h4>$78</h4>
-        </div>
-        <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-      </div>
-
-      <div class="pro">
-        <img src="@/../public/img/products/f6.jpg" alt="" />
-        <div class="desc">
-          <span>Adidas</span>
-          <h5>Cartoon Astronaut T-shirts</h5>
-
-          <h4>$78</h4>
-        </div>
-        <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-      </div>
-      <div class="pro">
-        <img src="@/../public/img/products/f7.jpg" alt="" />
-        <div class="desc">
-          <span>Adidas</span>
-          <h5>Cartoon Astronaut T-shirts</h5>
-
-          <h4>$78</h4>
-        </div>
-        <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-      </div>
-      <div class="pro">
-        <img src="@/../public/img/products/f4.jpg" alt="" />
-        <div class="desc">
-          <span>Adidas</span>
-          <h5>Cartoon Astronaut T-shirts</h5>
-          <h4>$78</h4>
+          <span>{{ product.title }}</span>
+          <h5>{{ product.description }}</h5>
+          <h4>{{ product.price }}$</h4>
         </div>
         <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
       </div>
@@ -69,7 +56,7 @@
 }
 
 .product1 .pro {
-  width: 23%;
+  width: 21%;
   min-width: 250px;
   padding: 10px 12px;
   border: 1px solid #cce7d0;
