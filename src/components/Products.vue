@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const products = ref(null);
 fetch("https://fakestoreapi.com/products")
@@ -9,7 +10,15 @@ fetch("https://fakestoreapi.com/products")
     console.log(data);
   });
 
-console.log(products.value);
+function truncateWords(text, maxWords) {
+  const words = text.split(" ");
+
+  if (words.length <= maxWords) {
+    return text;
+  }
+
+  return words.slice(0, maxWords).join(" ") + "...";
+}
 </script>
 
 <template>
@@ -17,15 +26,33 @@ console.log(products.value);
     <h2>Featured Products</h2>
     <p>Summer Collection New Morden Design</p>
     <div class="pro-container">
-      <div class="pro" v-for="product in products" :key="product.id">
+      <RouterLink
+        :to="`/product/${product.id}`"
+        class="pro"
+        v-for="product in products"
+        :key="product.id"
+      >
         <img :src="product.image" alt="" />
         <div class="desc">
           <span>{{ product.title }}</span>
-          <h5>{{ product.description }}</h5>
+          <h5>{{ truncateWords(product.description, 5) }}</h5>
           <h4>{{ product.price }}$</h4>
         </div>
-        <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-      </div>
+        <a href="#">
+          <i class="fa-solid fa-cart-shopping cart">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-cart-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              /></svg></i
+        ></a>
+      </RouterLink>
     </div>
   </section>
 </template>
@@ -48,7 +75,7 @@ console.log(products.value);
 .product1 .pro {
   width: 21%;
   min-width: 250px;
-  padding: 10px 12px;
+  padding: 10px 24px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
   cursor: pointer;
@@ -56,13 +83,18 @@ console.log(products.value);
   margin: 15px 0;
   transition: 0.2s ease;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .product1 .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }
 .product1 .pro img {
-  width: 100%;
+  width: 70%;
   border-radius: 20px;
 }
 
@@ -79,17 +111,17 @@ console.log(products.value);
 .product1 .pro .desc h5 {
   padding-top: 7px;
   color: #1a1a1a;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .product1 .pro .desc i {
-  font-size: 12px;
+  font-size: 16px;
   color: rgb(243, 181, 25);
 }
 
 .product1 .pro .desc h4 {
   padding-top: 7px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #088178;
 }
@@ -102,7 +134,7 @@ console.log(products.value);
   background-color: #e8f6ea;
   color: #088178;
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 10px;
 }
 </style>
