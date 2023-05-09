@@ -20,7 +20,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  background-image: url(@/../public/img/banner/b14.png);
+  background-image: url(@/assets/banner/b14.png);
   background-repeat: no-repeat;
   background-position: 20% 30%;
   background-color: #041e42;

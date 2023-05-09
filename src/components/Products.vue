@@ -83,6 +83,7 @@ function truncateWords(text, maxWords) {
   margin: 15px 0;
   transition: 0.2s ease;
   position: relative;
+  text-decoration: none;
 
   display: flex;
   flex-direction: column;

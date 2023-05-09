@@ -1,11 +1,11 @@
 <script setup>
 const features = [
-  { img: "@/../public/img/features/f1.png", title: "Free Shipping" },
-  { img: "@/../public/img/features/f2.png", title: "Online Order" },
-  { img: "@/../public/img/features/f3.png", title: "Save Money" },
-  { img: "@/../public/img/features/f4.png", title: "Promotions" },
-  { img: "@/../public/img/features/f5.png", title: "Happy Sell" },
-  { img: "@/../public/img/features/f6.png", title: "F24/7 Support" },
+  { img: "../src/assets/features/f1.png", title: "Free Shipping" },
+  { img: "../src/assets/features/f2.png", title: "Online Order" },
+  { img: "../src/assets/features/f3.png", title: "Save Money" },
+  { img: "../src/assets/features/f4.png", title: "Promotions" },
+  { img: "../src/assets/features/f5.png", title: "Happy Sell" },
+  { img: "../src/assets/features/f6.png", title: "F24/7 Support" },
 ];
 </script>
 
@@ -50,6 +50,7 @@ const features = [
   display: inline-block;
   padding: 9px 8px 6px 8px;
   line-height: 1;
+  border-radius: 4px;
   color: #088178;
   background-color: #fddde4;
 }

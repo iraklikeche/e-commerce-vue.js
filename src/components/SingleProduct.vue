@@ -1,54 +1,142 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "../stores/cart";
 
-const products = ref(null);
+const { cart, cartItems } = storeToRefs(useCartStore());
+const { addItemToCart } = useCartStore();
+
 const product = ref([]);
-fetch("https://fakestoreapi.com/products")
+let itemSize = ref("Small");
+let itemQtt = ref(1);
+let itemId = ref(1);
+
+const storeProduct = ref({});
+const route = useRoute();
+fetch(`https://fakestoreapi.com/products/${route.params.id}`)
   .then((response) => response.json())
   .then((data) => {
-    products.value = data;
-    product.value = products.value.find(
-      (item) => item.id === parseInt(route.params.id)
-    );
-
-    console.log(data);
+    product.value = data;
+    itemId.value = data.id;
   });
 
-const route = useRoute();
+const checkout = () => {
+  storeProduct.value = {
+    id: itemId.value,
+    size: itemSize.value,
+    quantity: itemQtt.value,
+  };
 
-console.log(route.params);
+  addItemToCart(storeProduct.value);
+};
+
+const checkout2 = () => {
+  console.log(cart.value, cartItems.value);
+};
 </script>
 
 <template>
-  <div class="pro">
-    <div>
-      <img :src="product.image" alt="" />
+  <!-- <div class="pro">
+    <div class="single-pro-image">
+      <img :src="product.image" width="100%" id="mainImg" alt="T-shirt" />
     </div>
     <div class="desc">
-      <span>{{ product.title }}</span>
+      <h6>{{ product.title }}</h6>
 
-      <h5>{{ product.description }}</h5>
+      <h4>{{ product.description }}</h4>
 
-      <h4>{{ product.price }}$</h4>
+      <h2>{{ product.price }}$</h2>
     </div>
-    <a href="#">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="currentColor"
-        class="bi bi-cart-fill cart"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-        /></svg
-    ></a>
-  </div>
+  </div> -->
+
+  <section class="pro-details section-p1">
+    <div class="single-pro-image">
+      <img :src="product.image" style="width: 80%" id="mainImg" alt="T-shirt" />
+    </div>
+    <div class="single-pro-details">
+      <h6>
+        {{ product.category }}
+      </h6>
+      <h4>{{ product.title }}</h4>
+      <h2>${{ product.price }}</h2>
+      <select v-model="itemSize">
+        <option>XL</option>
+        <option>XXL</option>
+        <option>Large</option>
+        <option>Small</option>
+      </select>
+      <input v-model="itemQtt" type="number" />
+      <button class="normal" @click="checkout">Add To Cart</button>
+      <button class="normal" @click="checkout2">Add ch</button>
+
+      <h4>Product Details</h4>
+      <span>
+        {{ product.description }}
+      </span>
+    </div>
+  </section>
 </template>
 
 <style scoped>
+.single-pro-image {
+  width: 40%;
+  margin-right: 50px;
+  padding-top: 50px;
+}
+
+.pro-details {
+  display: flex;
+  margin-top: 20px;
+}
+
+.pro-details .single-pro-details {
+  width: 50%;
+  padding-top: 50px;
+}
+
+.pro-details .single-pro-details h4 {
+  padding: 40px 0 20px 0;
+  font-size: 24px;
+}
+.pro-details .single-pro-details h2 {
+  font-size: 26px;
+}
+.pro-details .single-pro-details h6 {
+  font-size: 20px;
+  text-transform: capitalize;
+  /* letter-spacing: 1.1px; */
+}
+
+.pro-details .single-pro-details select {
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.pro-details .single-pro-details button {
+  background-color: #088178;
+  color: #fff;
+}
+
+.pro-details .single-pro-details input {
+  width: 50px;
+  height: 47px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.pro-details .single-pro-details span {
+  line-height: 25px;
+}
+
+.pro-details .single-pro-image {
+  width: 40%;
+  margin-right: 50px;
+}
+
+/* 
 .pro {
   width: 100%;
   min-width: 250px;
@@ -112,5 +200,5 @@ console.log(route.params);
   position: absolute;
   bottom: 10px;
   left: 50%;
-}
+} */
 </style>

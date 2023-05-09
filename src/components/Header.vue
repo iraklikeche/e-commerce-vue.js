@@ -1,10 +1,16 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "../stores/cart";
+
+const { cartItems } = storeToRefs(useCartStore());
 </script>
 
 <template>
   <section class="header">
-    <a href=""><img src="@/../public/img/logo.png" alt="" /></a>
+    <RouterLink to="/"
+      ><img src="@/../public/img/logo.png" alt=""
+    /></RouterLink>
     <div>
       <ul class="navbar">
         <li><RouterLink class="active" to="/">Home</RouterLink></li>
@@ -25,6 +31,7 @@ import { RouterLink } from "vue-router";
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                 /></svg></i
           ></a>
+          {{ cartItems }}
         </li>
         <i id="close" class="fa-solid fa-xmark"></i>
       </ul>
@@ -54,7 +61,7 @@ import { RouterLink } from "vue-router";
   display: flex;
   text-align: center;
   justify-content: space-between;
-  padding: 25px 100px 40px;
+  padding: 25px 100px 20px;
   background-color: #e3e6f3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   z-index: 999;
@@ -77,7 +84,7 @@ import { RouterLink } from "vue-router";
 
 .navbar li a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: #1a1a1a;
   transition: 0.3s ease;

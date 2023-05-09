@@ -10,7 +10,7 @@
 
 <style scoped>
 .hero {
-  background-image: url(@/../public/img/hero4.png);
+  background-image: url(@/assets/hero4.png);
   height: 90vh;
   background-size: cover;
   background-position: top 25% right 0;
@@ -30,7 +30,7 @@
 }
 
 .hero button {
-  background-image: url(@/../public/img/button.png);
+  background-image: url(@/assets/button.png);
 
   background-color: transparent;
   color: #088178;
