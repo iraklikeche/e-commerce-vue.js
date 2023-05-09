@@ -10,16 +10,6 @@ fetch("https://fakestoreapi.com/products")
   });
 
 console.log(products.value);
-
-truncateWords(text, maxWords) {
-    const words = text.split(' ');
-
-    if (words.length <= maxWords) {
-      return text;
-    }
-
-    return words.slice(0, maxWords).join(' ') + '...';
-  },
 </script>
 
 <template>
