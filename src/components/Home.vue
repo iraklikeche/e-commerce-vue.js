@@ -9,8 +9,6 @@ import Footer from "./Footer.vue";
 
 <template>
   <div>
-    <Header />
-
     <Hero />
 
     <Feature />
@@ -18,8 +16,6 @@ import Footer from "./Footer.vue";
     <Products />
 
     <News />
-
-    <Footer />
   </div>
 </template>
 
