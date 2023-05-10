@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-// import { storeToRefs } from "pinia";
 import { useCartStore } from "../stores/cart";
+import News from "./News.vue";
 
 // const { cart, cartItems } = storeToRefs(useCartStore());
 const { addItemToCart, cart, cartItems } = useCartStore();
@@ -56,6 +56,7 @@ const checkout = () => {
       </span>
     </div>
   </section>
+  <News />
 </template>
 
 <style scoped>

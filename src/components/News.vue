@@ -20,7 +20,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  background-image: url(@/assets/banner/b14.png);
+  background-image: url(@/assets/b14.png);
   background-repeat: no-repeat;
   background-position: 20% 30%;
   background-color: #041e42;
@@ -42,10 +42,10 @@
 }
 
 .news-letter input {
-  height: 60px;
+  height: 50px;
   width: 100%;
   padding: 0 1.2em;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid transparent;
   border-radius: 5px;
   outline: none;
@@ -58,6 +58,9 @@
   color: #fff;
   white-space: nowrap;
   border-radius: 0;
+
+  font-size: 16px;
+  letter-spacing: 1.1px;
 }
 
 .news-letter .sign-up {

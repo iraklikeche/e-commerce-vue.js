@@ -13,9 +13,11 @@ const { cartItems } = storeToRefs(useCartStore());
     /></RouterLink>
     <div>
       <ul class="navbar">
-        <li><RouterLink class="active" to="/">Home</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+          <RouterLink activeClass="active" to="/">Home</RouterLink>
+        </li>
+        <li><RouterLink activeClass="active" to="/about">About</RouterLink></li>
+        <li><a activeClass="active" href="#">Contact</a></li>
         <li>
           <a href="#"
             ><i id="lg-bag" class="fa-solid fa-cart-shopping">
@@ -26,6 +28,7 @@ const { cartItems } = storeToRefs(useCartStore());
                 fill="currentColor"
                 class="bi bi-cart-fill"
                 viewBox="0 0 16 16"
+                activeClass="active"
               >
                 <path
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
@@ -93,17 +96,6 @@ const { cartItems } = storeToRefs(useCartStore());
 .navbar li a:hover,
 .navbar li a.active {
   color: #088178;
-}
-
-.navbar li a.active:after,
-.navbar li a:hover::after {
-  content: "";
-  width: 30%;
-  height: 2px;
-  background-color: #088178;
-  position: absolute;
-  bottom: -4px;
-  left: 30px;
 }
 
 .mobile {
