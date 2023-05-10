@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { storeToRefs } from "pinia";
+// import { storeToRefs } from "pinia";
 import { useCartStore } from "../stores/cart";
 
-const { cart, cartItems } = storeToRefs(useCartStore());
-const { addItemToCart } = useCartStore();
+// const { cart, cartItems } = storeToRefs(useCartStore());
+const { addItemToCart, cart, cartItems } = useCartStore();
 
 const product = ref([]);
 let itemSize = ref("Small");
@@ -30,34 +30,15 @@ const checkout = () => {
 
   addItemToCart(storeProduct.value);
 };
-
-const checkout2 = () => {
-  console.log(cart.value, cartItems.value);
-};
 </script>
 
 <template>
-  <!-- <div class="pro">
-    <div class="single-pro-image">
-      <img :src="product.image" width="100%" id="mainImg" alt="T-shirt" />
-    </div>
-    <div class="desc">
-      <h6>{{ product.title }}</h6>
-
-      <h4>{{ product.description }}</h4>
-
-      <h2>{{ product.price }}$</h2>
-    </div>
-  </div> -->
-
   <section class="pro-details section-p1">
     <div class="single-pro-image">
       <img :src="product.image" style="width: 80%" id="mainImg" alt="T-shirt" />
     </div>
     <div class="single-pro-details">
-      <h6>
-        {{ product.category }}
-      </h6>
+      <h6>{{ product.category }}</h6>
       <h4>{{ product.title }}</h4>
       <h2>${{ product.price }}</h2>
       <select v-model="itemSize">
@@ -68,7 +49,6 @@ const checkout2 = () => {
       </select>
       <input v-model="itemQtt" type="number" />
       <button class="normal" @click="checkout">Add To Cart</button>
-      <button class="normal" @click="checkout2">Add ch</button>
 
       <h4>Product Details</h4>
       <span>

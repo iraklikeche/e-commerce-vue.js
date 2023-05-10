@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 export const useCartStore = defineStore("cart", () => {
   const cart = ref([]);
   const cartItems = computed(() => cart.value.length);
-  function addItemToCart(val) {
+  const addItemToCart = (val) => {
     let ind = cart.value.findIndex(
       (e) => e.id === val.id && e.size === val.size
     );
@@ -13,8 +13,7 @@ export const useCartStore = defineStore("cart", () => {
     } else {
       cart.value[ind].quantity = cart.value[ind].quantity + val.quantity;
     }
-    //keche imena uklevesi arakaci xar prosta mezizghebi
-  }
+  };
 
   return { cart, cartItems, addItemToCart };
 });

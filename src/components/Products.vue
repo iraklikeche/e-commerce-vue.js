@@ -1,13 +1,16 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useCartStore } from "../stores/cart";
+import { storeToRefs } from "pinia";
+
+const { cart } = storeToRefs(useCartStore());
 
 const products = ref(null);
 fetch("https://fakestoreapi.com/products")
   .then((response) => response.json())
   .then((data) => {
     products.value = data;
-    console.log(data);
   });
 
 function truncateWords(text, maxWords) {
@@ -19,6 +22,8 @@ function truncateWords(text, maxWords) {
 
   return words.slice(0, maxWords).join(" ") + "...";
 }
+
+console.log(cart.value);
 </script>
 
 <template>
@@ -38,7 +43,7 @@ function truncateWords(text, maxWords) {
           <h5>{{ truncateWords(product.description, 5) }}</h5>
           <h4>{{ product.price }}$</h4>
         </div>
-        <a href="#">
+        <a href="#" @click="checkout">
           <i class="fa-solid fa-cart-shopping cart">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +52,11 @@ function truncateWords(text, maxWords) {
               fill="currentColor"
               class="bi bi-cart-fill"
               viewBox="0 0 16 16"
+              :style="{
+                color: cart.some((e) => e.id === product.id)
+                  ? '#088178'
+                  : 'grey',
+              }"
             >
               <path
                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
@@ -133,7 +143,6 @@ function truncateWords(text, maxWords) {
   line-height: 40px;
   border-radius: 50px;
   background-color: #e8f6ea;
-  color: #088178;
   position: absolute;
   bottom: 10px;
   right: 10px;
