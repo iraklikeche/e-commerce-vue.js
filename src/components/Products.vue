@@ -34,6 +34,7 @@ console.log(cart.value);
       <RouterLink
         :to="`/product/${product.id}`"
         class="pro"
+        :class="{ 'in-cart': cart.some((e) => e.id === product.id) }"
         v-for="product in products"
         :key="product.id"
       >
@@ -146,5 +147,16 @@ console.log(cart.value);
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.pro.in-cart::after {
+  content: "Added To Cart";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  color: #088178;
+  font-weight: 700;
+  letter-spacing: 1.1px;
 }
 </style>
