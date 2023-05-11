@@ -6,6 +6,33 @@ const inputConfigs = [
   { type: "email", placeholder: "E-mail" },
   { type: "text", placeholder: "Subject" },
 ];
+
+const people = [
+  {
+    id: 1,
+    image: "../src/assets/people/1.png",
+    name: "John Doe",
+    title: "Senior Marketing Manager",
+    phone: "+000 123 000 88 88",
+    email: "contact@example.com",
+  },
+  {
+    id: 2,
+    image: "../src/assets/people/2.png",
+    name: "William Smith",
+    title: "Senior Marketing Manager",
+    phone: "+000 123 000 55 88",
+    email: "contact@example.com",
+  },
+  {
+    id: 3,
+    image: "../src/assets/people/3.png",
+    name: "Emma Wild",
+    title: "Senior Marketing Manager",
+    phone: "+000 123 000 99 88",
+    email: "contact@example.com",
+  },
+];
 </script>
 
 <template>
@@ -55,28 +82,13 @@ const inputConfigs = [
       <button type="submit" class="normal">Submit</button>
     </form>
     <div class="people">
-      <div>
-        <img src="./images/img/people/1.png" alt="" />
+      <div v-for="person in people" :key="person.id">
+        <img :src="person.image" :alt="person.name" />
         <p>
-          <span>John Doe</span>Senior Marketing Manager <br />
-          Phone: +000 123 000 88 88 <br />
-          Email: contact@example.com
-        </p>
-      </div>
-      <div>
-        <img src="./images/img/people/2.png" alt="" />
-        <p>
-          <span>William Smith</span>Senior Marketing Manager <br />
-          Phone: +000 123 000 55 88 <br />
-          Email: contact@example.com
-        </p>
-      </div>
-      <div>
-        <img src="./images/img/people/3.png" alt="" />
-        <p>
-          <span>Emaa Wild</span>Senior Marketing Manager <br />
-          Phone: +000 123 000 99 88 <br />
-          Email: contact@example.com
+          <span>{{ person.name }}</span
+          >{{ person.title }} <br />
+          Phone: {{ person.phone }} <br />
+          Email: {{ person.email }}
         </p>
       </div>
     </div>
@@ -142,11 +154,12 @@ const inputConfigs = [
   margin: 30px;
   padding: 80px;
   border: 1px solid #e1e1e1;
+  align-items: center;
 }
 
 .contact-us form {
   display: flex;
-  width: 65%;
+  width: 60%;
   flex-direction: column;
   align-items: center;
 }
@@ -189,15 +202,15 @@ const inputConfigs = [
 }
 
 .contact-us .people img {
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .contact-us .people div p {
   margin: 0;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 25px;
 }
 
