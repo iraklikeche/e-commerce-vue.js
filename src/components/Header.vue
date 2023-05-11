@@ -17,7 +17,9 @@ const { cartItems } = storeToRefs(useCartStore());
           <RouterLink activeClass="active" to="/">Home</RouterLink>
         </li>
         <li><RouterLink activeClass="active" to="/about">About</RouterLink></li>
-        <li><a activeClass="active" href="#">Contact</a></li>
+        <li>
+          <RouterLink activeClass="active" to="/contact">Contact</RouterLink>
+        </li>
         <li>
           <a href="#"
             ><i id="lg-bag" class="fa-solid fa-cart-shopping">
