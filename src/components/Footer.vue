@@ -156,4 +156,14 @@ footer .copyright {
   width: 100%;
   text-align: center;
 }
+
+@media (max-width: 799px) {
+  footer p {
+    font-size: 14px;
+  }
+
+  footer a {
+    font-size: 14px;
+  }
+}
 </style>

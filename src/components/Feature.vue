@@ -69,4 +69,14 @@ const features = [
 .feature .fe-box:nth-child(6) h6 {
   background-color: #fff2e5;
 }
+
+@media (max-width: 799px) {
+  .feature {
+    justify-content: center;
+  }
+
+  .feature .fe-box {
+    margin: 15px 15px;
+  }
+}
 </style>

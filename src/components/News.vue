@@ -69,4 +69,14 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+@media (max-width: 799px) {
+  .section-p1 {
+    padding: 25px 80px;
+  }
+
+  .news-letter .sign-up {
+    width: 65%;
+  }
+}
 </style>

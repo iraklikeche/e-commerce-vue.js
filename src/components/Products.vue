@@ -159,4 +159,14 @@ function truncateWords(text, maxWords) {
   font-weight: 700;
   letter-spacing: 1.1px;
 }
+
+@media (max-width: 799px) {
+  .product1 .pro-container {
+    justify-content: center;
+  }
+
+  .product1 .pro {
+    margin: 15px;
+  }
+}
 </style>

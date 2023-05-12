@@ -41,4 +41,12 @@
   font-weight: 700;
   font-size: 15px;
 }
+
+@media (max-width: 799px) {
+  .hero {
+    height: 90vh;
+    padding: 0 80px;
+    background-position: top 30% right 30%;
+  }
+}
 </style>
