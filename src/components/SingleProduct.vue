@@ -37,7 +37,7 @@ const checkout = (product) => {
 <template>
   <section class="pro-details section-p1">
     <div class="single-pro-image">
-      <img :src="product.image" style="width: 80%" id="mainImg" alt="T-shirt" />
+      <img :src="product.image" id="mainImg" alt="T-shirt" />
     </div>
     <div class="single-pro-details">
       <h6>{{ product.category }}</h6>
@@ -66,6 +66,10 @@ const checkout = (product) => {
   width: 40%;
   margin-right: 50px;
   padding-top: 50px;
+}
+
+.single-pro-image img {
+  width: 80%;
 }
 
 .pro-details {
@@ -116,5 +120,28 @@ const checkout = (product) => {
 .pro-details .single-pro-image {
   width: 40%;
   margin-right: 50px;
+}
+
+@media (max-width: 799px) {
+  .pro-details .single-pro-details h4 {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+  .pro-details .single-pro-details select {
+    margin-top: 20px;
+  }
+
+  .pro-details .single-pro-details h2 {
+    font-size: 20px;
+  }
+
+  .pro-details {
+    align-items: center;
+  }
+
+  .single-pro-image img {
+    width: 100%;
+  }
 }
 </style>

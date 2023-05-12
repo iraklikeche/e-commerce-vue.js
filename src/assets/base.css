@@ -76,4 +76,19 @@ button.white {
   .section-p1 {
     padding: 40px 80px;
   }
+
+  @media (max-width: 480px) {
+    .section-p1 {
+      padding: 20px;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 0;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
 }

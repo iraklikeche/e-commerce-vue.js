@@ -258,4 +258,40 @@ const people = [
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 799px) {
+  .contact-us form {
+    width: 50%;
+  }
+
+  .contact-form h2 {
+    font-size: 28px;
+  }
+
+  @media (max-width: 480px) {
+    .contact-details {
+      flex-direction: column;
+    }
+
+    .contact-details .info {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .contact-details .map {
+      width: 100%;
+    }
+
+    .contact-us {
+      margin: 10px;
+      padding: 30px 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-us form {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+}
 </style>

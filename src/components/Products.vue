@@ -168,5 +168,11 @@ function truncateWords(text, maxWords) {
   .product1 .pro {
     margin: 15px;
   }
+
+  @media (max-width: 480px) {
+    .product1 .pro {
+      width: 100%;
+    }
+  }
 }
 </style>

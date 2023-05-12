@@ -39,7 +39,7 @@ const toggleNav = () => {
           >
         </li>
         <li>
-          <RouterLink to="/cart">
+          <RouterLink to="/cart" @click="toggleNav">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -176,6 +176,12 @@ const toggleNav = () => {
     left: 30px;
     color: #222;
     font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 30px;
   }
 }
 </style>

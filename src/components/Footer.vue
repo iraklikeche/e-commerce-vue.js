@@ -166,4 +166,10 @@ footer .copyright {
     font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  footer .copyright {
+    text-align: start;
+  }
+}
 </style>

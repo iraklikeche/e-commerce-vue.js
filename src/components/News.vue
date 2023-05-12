@@ -79,4 +79,14 @@
     width: 65%;
   }
 }
+
+@media (max-width: 799px) {
+  .news-letter .sign-up {
+    width: 100%;
+  }
+
+  .news-letter {
+    padding: 40px 20px;
+  }
+}
 </style>

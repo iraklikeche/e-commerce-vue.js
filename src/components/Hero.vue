@@ -49,4 +49,11 @@
     background-position: top 30% right 30%;
   }
 }
+
+@media (max-width: 480px) {
+  .hero {
+    background-position: 55%;
+    padding: 0 20px;
+  }
+}
 </style>

@@ -15,7 +15,7 @@ const cartItemsTotal = computed(() =>
 
 const truncateImgName = (name) => {
   if (name.length > 20) {
-    return name.substring(0, 50) + "...";
+    return name.substring(0, 40) + "...";
   }
   return name;
 };
@@ -240,5 +240,19 @@ const truncateImgName = (name) => {
 
 .subtotal h3 {
   padding-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+  .cart-add {
+    flex-direction: column;
+  }
+
+  .coupon {
+    width: 100%;
+  }
+
+  .subtotal {
+    width: 100%;
+  }
 }
 </style>
