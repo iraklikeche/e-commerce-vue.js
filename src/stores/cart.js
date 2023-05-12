@@ -16,17 +16,14 @@ export const useCartStore = defineStore("cart", () => {
     }
   };
 
-  const removeItemToCart = (val) => {
+  const removeItemFromCart = (val) => {
     let ind = cart.value.findIndex(
       (e) => e.id === val.id && e.size === val.size
     );
-    if (ind === -1) {
-      cart.value.pop(val);
-      console.log(cart);
-    } else {
-      cart.value[ind].quantity = cart.value[ind].quantity + val.quantity;
+    if (ind !== -1) {
+      cart.value.splice(ind, 1);
     }
   };
 
-  return { cart, cartItems, addItemToCart, removeItemToCart };
+  return { cart, cartItems, addItemToCart, removeItemFromCart };
 });
