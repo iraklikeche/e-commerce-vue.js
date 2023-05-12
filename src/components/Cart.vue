@@ -19,8 +19,6 @@ const truncateImgName = (name) => {
   }
   return name;
 };
-
-console.log(cart);
 </script>
 
 <template>

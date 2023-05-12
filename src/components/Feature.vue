@@ -34,7 +34,6 @@ const features = [
   border: 1px solid #cce7d0;
   border-radius: 4px;
   margin: 15px 0;
-  /* display: flex; */
 }
 
 .feature .fe-box:hover {
