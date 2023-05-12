@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useCartStore = defineStore("cart", () => {
   const cart = ref([]);
   const cartItems = computed(() => cart.value.length);
+
   const addItemToCart = (val) => {
     let ind = cart.value.findIndex(
       (e) => e.id === val.id && e.size === val.size
@@ -15,5 +16,17 @@ export const useCartStore = defineStore("cart", () => {
     }
   };
 
-  return { cart, cartItems, addItemToCart };
+  const removeItemToCart = (val) => {
+    let ind = cart.value.findIndex(
+      (e) => e.id === val.id && e.size === val.size
+    );
+    if (ind === -1) {
+      cart.value.pop(val);
+      console.log(cart);
+    } else {
+      cart.value[ind].quantity = cart.value[ind].quantity + val.quantity;
+    }
+  };
+
+  return { cart, cartItems, addItemToCart, removeItemToCart };
 });

@@ -1,3 +1,28 @@
+<script setup>
+import { useCartStore } from "../stores/cart";
+import { computed } from "vue";
+
+const { cart, removeItemToCart } = useCartStore();
+
+const cartSubtotal = computed(() => {
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  return parseFloat(total.toFixed(2));
+});
+
+const cartItemsTotal = computed(() =>
+  cart.map((item) => item.price * item.quantity)
+);
+
+const truncateImgName = (name) => {
+  if (name.length > 20) {
+    return name.substring(0, 50) + "...";
+  }
+  return name;
+};
+
+console.log(cart);
+</script>
+
 <template>
   <section class="cart-header cart">
     <h2>#cart</h2>
@@ -17,37 +42,33 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="(item, index) in cart" :key="index">
           <td>
-            <a href="#"><i class="fa-solid fa-xmark"></i></a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 384 512"
+              class="icon"
+              @click="removeItemToCart"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              />
+            </svg>
           </td>
           <td>
-            <img src="./images/img/products/f1.jpg" alt="" />
+            <img :src="item.imgSrc" alt="" />
           </td>
-          <td>Cartoon Astronaut T-shirts</td>
-          <td>$118.19</td>
-          <td><input type="number" value="1" /></td>
-          <td>118.19</td>
-        </tr>
-        <tr>
           <td>
-            <a href="#"><i class="fa-solid fa-xmark"></i></a>
+            {{ truncateImgName(item.imgName) }}
+
+            <br />
+            <span> ({{ item.size }})</span>
           </td>
-          <td><img src="./images/img/products/f2.jpg" alt="" /></td>
-          <td>Cartoon Astronaut T-shirts</td>
-          <td>$118.19</td>
-          <td><input type="number" value="1" /></td>
-          <td>$118.19</td>
-        </tr>
-        <tr>
+          <td>${{ item.price }}</td>
           <td>
-            <a href="#"><i class="fa-solid fa-xmark"></i></a>
+            <input v-model="item.quantity" type="number" />
           </td>
-          <td><img src="./images/img/products/f3.jpg" alt="" /></td>
-          <td>Cartoon Astronaut T-shirts</td>
-          <td>$118.19</td>
-          <td><input type="number" value="1" /></td>
-          <td>118.19</td>
+          <td>{{ cartItemsTotal[index] }}</td>
         </tr>
       </tbody>
     </table>
@@ -57,7 +78,11 @@
     <div class="coupon">
       <h3>Apply Coupon</h3>
       <div>
-        <input type="text" placeholder="Enter Your Coupon" />
+        <input
+          type="text"
+          placeholder="Enter Your Coupon"
+          @input="onQuantityChange(index, $event.target.value)"
+        />
         <button class="normal">Apply</button>
       </div>
     </div>
@@ -67,7 +92,7 @@
       <table>
         <tr>
           <td>Cart Subtotal</td>
-          <td>$335</td>
+          <td>${{ cartSubtotal }}</td>
         </tr>
         <tr>
           <td>Shipping</td>
@@ -75,7 +100,9 @@
         </tr>
         <tr>
           <td><strong>Total</strong></td>
-          <td><strong>$335</strong></td>
+          <td>
+            <strong>$ {{ cartSubtotal }}</strong>
+          </td>
         </tr>
       </table>
       <button class="normal">Proceed to checkout</button>
@@ -84,6 +111,11 @@
 </template>
 
 <style scoped>
+.icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
 .cart-header {
   background-image: url(@/assets/about/banner.png);
   height: 40vh;
@@ -107,7 +139,7 @@
 }
 
 .cart table img {
-  width: 70px;
+  width: 50px;
 }
 
 .cart table td:nth-child(1) {

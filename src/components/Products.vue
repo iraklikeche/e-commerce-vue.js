@@ -22,8 +22,6 @@ function truncateWords(text, maxWords) {
 
   return words.slice(0, maxWords).join(" ") + "...";
 }
-
-console.log(cart.value);
 </script>
 
 <template>

@@ -4,8 +4,7 @@ import { useRoute } from "vue-router";
 import { useCartStore } from "../stores/cart";
 import News from "./News.vue";
 
-// const { cart, cartItems } = storeToRefs(useCartStore());
-const { addItemToCart, cart, cartItems } = useCartStore();
+const { addItemToCart } = useCartStore();
 
 const product = ref([]);
 let itemSize = ref("Small");
@@ -21,11 +20,14 @@ fetch(`https://fakestoreapi.com/products/${route.params.id}`)
     itemId.value = data.id;
   });
 
-const checkout = () => {
+const checkout = (product) => {
   storeProduct.value = {
     id: itemId.value,
     size: itemSize.value,
     quantity: itemQtt.value,
+    imgSrc: product.image,
+    imgName: product.title,
+    price: product.price,
   };
 
   addItemToCart(storeProduct.value);
@@ -48,7 +50,7 @@ const checkout = () => {
         <option>Small</option>
       </select>
       <input v-model="itemQtt" type="number" />
-      <button class="normal" @click="checkout">Add To Cart</button>
+      <button class="normal" @click="checkout(product)">Add To Cart</button>
 
       <h4>Product Details</h4>
       <span>
