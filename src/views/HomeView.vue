@@ -1,8 +1,8 @@
 <script setup>
-import Hero from "@/components/Hero.vue";
-import Feature from "@/components/Feature.vue";
-import Products from "@/components/Products.vue";
-import News from "@/components/News.vue";
+import Hero from "@/components/LandingView/Hero.vue";
+import Feature from "@/components/LandingView/Feature.vue";
+import Products from "@/components/LandingView/Products.vue";
+import News from "@/components/LandingView/News.vue";
 </script>
 
 <template>

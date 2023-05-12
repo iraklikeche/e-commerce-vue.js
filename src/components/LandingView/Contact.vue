@@ -1,5 +1,5 @@
 <script setup>
-import InputComp from "./InputComp.vue";
+import InputComp from "../InputComp.vue";
 
 const inputConfigs = [
   { type: "text", placeholder: "Your Name" },

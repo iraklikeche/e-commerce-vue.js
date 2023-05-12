@@ -1,6 +1,6 @@
 <script setup>
-import Feature from "../components/Feature.vue";
-import News from "../components/News.vue";
+import Feature from "../components/LandingView/Feature.vue";
+import News from "../components/LandingView/News.vue";
 </script>
 
 <template>

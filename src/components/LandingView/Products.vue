@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 
 const { cart } = storeToRefs(useCartStore());

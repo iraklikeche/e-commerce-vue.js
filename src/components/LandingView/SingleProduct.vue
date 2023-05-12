@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "@/stores/cart";
 import News from "./News.vue";
 
 const { addItemToCart } = useCartStore();
