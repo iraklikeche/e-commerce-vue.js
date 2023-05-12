@@ -103,4 +103,17 @@ import News from "../components/News.vue";
   text-decoration: none;
   color: #cd13a1;
 }
+
+@media (max-width: 799px) {
+  .about .about-box {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about-details {
+    text-align: center;
+  }
+}
 </style>
